@@ -1,9 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateObservationDto } from './dto/create-observation.dto';
 import { UpdateObservationDto } from './dto/update-observation.dto';
-
+import { Observation } from './entities/observation.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import {Repository} from 'typeorm'
 @Injectable()
 export class ObservationService {
+
+  constructor(@InjectRepository(Observation)
+  private readonly observationRepository: Repository<Observation>)
+  {}  
   create(createObservationDto: CreateObservationDto) {
     return 'This action adds a new observation';
   }

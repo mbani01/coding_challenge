@@ -11,7 +11,7 @@ export class UsersController {
   
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    // return this.usersService.create(createUserDto);
+    return this.usersService.create(createUserDto);
   }
 
   @Post('api-key')
@@ -19,10 +19,10 @@ export class UsersController {
     return await this.usersService.authenticate(authenticateDto.userId);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('protected')
-  empty(@Query('api_key') key: string)
-  {
-    return "Authorized"
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get('protected')
+  // empty(@Query('api_key') key: string)
+  // {
+  //   return "Authorized"
+  // }
 }
