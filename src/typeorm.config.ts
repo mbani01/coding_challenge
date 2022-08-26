@@ -8,7 +8,7 @@ const typeOrmConfig: TypeOrmModuleOptions = {
     password: process.env.POSTGRES_PASSWORD || 'postgres',
     database: process.env.POSTGRES_DB,
 	autoLoadEntities: true,
-	synchronize: false,
+	synchronize: true,
 }
 
 export = typeOrmConfig
