@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
-
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
+import { User } from "../../users/entities/user.entity"
 @Entity()
 export class Observation {
 	@PrimaryGeneratedColumn('uuid')
@@ -16,4 +16,7 @@ export class Observation {
 
 	@UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
 	public updated_at: Date;
+
+	@ManyToOne(() => User, (user)=>user.observations)
+	user: User
 }
