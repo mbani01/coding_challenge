@@ -56,7 +56,7 @@ export class ObservationController {
       },
     },
   })
-async uploadPictures(@Query('api_key') api_key: string, @UploadedFile('file') file:Express.Multer.File, @Req() req, @Param('observationId') id: string)
+async uploadPictures(@Query('api_key') api_key: string, @UploadedFile('file') file:Express.Multer.File, @Req() req, @Query('observationId') id: string)
   {
     return await this.observationService.updatePicture(id, file)
   }

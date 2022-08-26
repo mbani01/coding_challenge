@@ -23,7 +23,7 @@ export class ObservationService {
   }
 
   async findAll(userId: any) {
-    return await this.observationRepository.find({ relations: ["user"] });
+    return await this.observationRepository.find({ relations: ["user", "pictures"] });
   }
 
   async findOne(id: string, userId: any) {
