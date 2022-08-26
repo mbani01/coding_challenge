@@ -10,23 +10,32 @@ export class ObservationService {
   constructor(@InjectRepository(Observation)
   private readonly observationRepository: Repository<Observation>)
   {}  
-  create(createObservationDto: CreateObservationDto) {
-    return 'This action adds a new observation';
+  async create(createObservationDto: CreateObservationDto, userId: any) {
+    const observation = await this.observationRepository.create({...createObservationDto, user:userId}) 
+    await this.observationRepository.save(observation);
+    return observation
   }
 
-  findAll() {
-    return `This action returns all observation`;
+  async findAll(userId: any) {
+    return await this.observationRepository.find({ relations: ["user"] });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} observation`;
+  async findOne(id: string, userId: any) {
+    return await this.observationRepository.findOne({ where: {
+      user: {
+          id: userId
+      },
+      id,
+  }});
   }
 
-  update(id: number, updateObservationDto: UpdateObservationDto) {
-    return `This action updates a #${id} observation`;
+  async update(id: string, updateObservationDto: UpdateObservationDto, userId: any) 
+  {
+    const observation = await this.observationRepository.update({id}, {...updateObservationDto, user: userId})
+    return observation;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} observation`;
+  async remove(id: string, userId: any) {
+    return await this.observationRepository.delete({id, user: {id: userId}})
   }
 }
