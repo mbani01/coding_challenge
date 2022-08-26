@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { ObservationModule } from './observation/observation.module';
+import { CloudinaryProvider } from './cloudinary/cloudinary.provider';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import * as  typeOrmConfig  from './typeorm.config'
 
 @Module({
@@ -11,8 +13,9 @@ import * as  typeOrmConfig  from './typeorm.config'
     TypeOrmModule.forRoot(typeOrmConfig),
     UsersModule,
     ObservationModule,
+    CloudinaryModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CloudinaryProvider],
 })
 export class AppModule {}

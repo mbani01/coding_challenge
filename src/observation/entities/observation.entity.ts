@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany } from "typeorm";
 import { User } from "../../users/entities/user.entity"
+import {ObservationPicture} from './observation_pictures.entity'
 @Entity()
 export class Observation {
 	@PrimaryGeneratedColumn('uuid')
@@ -19,4 +20,7 @@ export class Observation {
 
 	@ManyToOne(() => User, (user)=>user.observations)
 	user: User
+
+	@OneToMany(()=> ObservationPicture, (picture)=> picture.observation)
+	pictures : []
 }
