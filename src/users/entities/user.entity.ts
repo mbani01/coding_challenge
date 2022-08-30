@@ -9,6 +9,6 @@ export class User {
 	@Column({length: 50})
 	name: string;
 
-	@OneToMany(()=> Observation, (observation)=>observation.user)
+	@OneToMany(()=> Observation, (observation)=>observation.user, {cascade: true})
 	observations: []
 }

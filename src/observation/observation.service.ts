@@ -31,8 +31,9 @@ export class ObservationService {
       user: {
           id: userId
       },
-      id,
-  }});
+      id},
+      relations: ["user", "pictures"]
+  });
   }
 
   async update(id: string, updateObservationDto: UpdateObservationDto, userId: any) 

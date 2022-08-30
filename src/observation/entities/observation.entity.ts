@@ -18,9 +18,9 @@ export class Observation {
 	@UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
 	public updated_at: Date;
 
-	@ManyToOne(() => User, (user)=>user.observations)
+	@ManyToOne(() => User, (user)=>user.observations, {onDelete: 'CASCADE'})
 	user: User
 
-	@OneToMany(()=> ObservationPicture, (picture)=> picture.observation)
+	@OneToMany(()=> ObservationPicture, (picture)=> picture.observation, {cascade: true})
 	pictures : []
 }

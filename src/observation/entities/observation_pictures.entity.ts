@@ -8,6 +8,6 @@ export class ObservationPicture {
 	@Column()
 	picture: string;
 
-	@ManyToOne(()=> Observation, (observation)=>observation.pictures)
+	@ManyToOne(()=> Observation, (observation)=>observation.pictures, {onDelete: 'CASCADE'})
 	observation: Observation
 }
