@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { ObservationModule } from './observation/observation.module';
 import { CloudinaryProvider } from './cloudinary/cloudinary.provider';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { AuthModule } from './auth/auth.module';
 import * as  typeOrmConfig  from './typeorm.config'
 
 @Module({
@@ -14,8 +15,9 @@ import * as  typeOrmConfig  from './typeorm.config'
     UsersModule,
     ObservationModule,
     CloudinaryModule,
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService, CloudinaryProvider],
+  providers: [AppService],
 })
 export class AppModule {}

@@ -11,6 +11,10 @@ async function bootstrap() {
     .setTitle('Observations API')
     .setDescription('Simple CRUD for observations')
     .setVersion('1.0')
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'JWT',
+      )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
